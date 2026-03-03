@@ -12,20 +12,22 @@ Uso:
 import argparse
 import platform
 import sys
-from concurrent.futures import ThreadPoolExecutor, as_command
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
-from utils.logger import setup_logger
-from utils.json_writter import ReportWriter
-from modules import saude, rede, logs
+from utils.logger import logger_setup
+from utils.writerjson import ReportWriter
+from modulos import saude, rede, logs
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Definindo diretório/pasta padrão
 
 def dir_padrao() -> Path:
-    if platform.System() == "Windows":
+    if platform.system() == "Windows":
 	    return Path.home() / "AppData" / "Local" / "sysreport" / "relatorios"
-    return Path("/var/log/relatorios")
+    return Path.home() / "sysreport" / "relatorios"
 
 # CLI
 
@@ -37,8 +39,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--dir",
         type=Path,
-        padrao=dir_padrao(),
-        help="Diretório de saída dos relatórios (Padrão: %(padrao)s)",
+        default=dir_padrao(),
+        help="Diretório de saída dos relatórios (Padrão: %(default)s)",
     )
     return parser.parse_args()
 
@@ -50,7 +52,7 @@ def main() -> None:
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     report_dir: Path = args.dir
 
-    log = setup_logger(report_dir, timestamp)
+    log = logger_setup(report_dir, timestamp)
     writer = ReportWriter(hostname=platform.node(), timestamp=timestamp)
 
     log.info("sysreport Iniciado — %s %s", platform.system(), platform.version())
