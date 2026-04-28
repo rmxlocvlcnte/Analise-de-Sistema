@@ -5,8 +5,9 @@
 ## Funcionalidades
 
 * Auditoria de Logs:
-       * Linux: Coleta dados de erros e aletas através do journalctl (Últimas 24 horas)
-       * Segurança: Monitoramento de tentativas de força bruta via /var/log/auth.log, com extração e contagem dos IPs agressores (Top 20).
+
+  * Linux: Coleta dados de erros e aletas através do journalctl (Últimas 24 horas)
+  * Segurança: Monitoramento de tentativas de força bruta via /var/log/auth.log, com extração e contagem dos IPs agressores (Top 20).
 * Diagnóstico de Saúde: Módulos dedicados para verificação da saúde do sistema (CPU, Memória, Disco).
 * Diagnóstico de Rede: Verificação de conectividade e status de interfaces.
 * Alta Performance: Utilização de processamento paralelo (ThreadPoolExecutor) para execução simultânea de diagnósticos.
@@ -15,12 +16,12 @@
 ## Arquitetura Técnica
 
 O projeto é modular e organizado para facilitar a expansão:
-  ´´´
+```
   sysreport/
 ├── main.py            # Ponto de entrada com CLI robusta (argparse)
 ├── modulos/           # Lógica de análise (saude, rede, logs)
 └── utils/             # Helpers (logger, escrita em JSON)
-  ´´´
+```
 ## Principais Tecnologias:
 
 Python 3.10+
@@ -29,13 +30,13 @@ Bibliotecas padrão: argparse, concurrent.futures, pathlib, subprocess, re, coll
 ## Uso
 
 O sysreport gera um relatório em JSON contendo os dados coletados:
-´´´
+```
 # Execução básica
 python main.py
 
 # Especificando diretório de saída
 python main.py --dir "/caminho/personalizado/relatorios"
-
+```
 ## Roadmap de Desenvolvimento
 
 * [ ] Implementar integração para envio de relatórios via webhook (ex: Discord/Slack).
