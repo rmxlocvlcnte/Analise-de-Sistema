@@ -1,6 +1,6 @@
 # Sysreport
 
-´´´sysreport´´´ é uma ferramenta de auditoria de sistema desenvolvida em Python, projetada para realizar diagnósticos rápidos de saúde e segurança em ambientes Linux e Windows. O projeto tem como foco a automação da coleta de dados críticos, fornecendo relatórios estruturados (JSON) para análise pós-processamento.
+**Sysreport** é uma ferramenta de auditoria de sistema desenvolvida em Python, projetada para realizar diagnósticos rápidos de saúde e segurança em ambientes Linux e Windows. O projeto tem como foco a automação da coleta de dados críticos, fornecendo relatórios estruturados (JSON) para análise pós-processamento.
 
 ## Funcionalidades
 
