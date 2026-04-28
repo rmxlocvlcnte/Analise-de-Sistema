@@ -25,6 +25,7 @@ O projeto é modular e organizado para facilitar a expansão:
 ## Principais Tecnologias:
 
 Python 3.10+
+
 Bibliotecas padrão: argparse, concurrent.futures, pathlib, subprocess, re, collections.Counter.
 
 ## Uso
